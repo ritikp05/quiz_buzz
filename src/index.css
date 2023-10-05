@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+
+
+@tailwind utilities;
+
+.select{
+    background-color: greenyellow;
+}
+
+.wrong{
+    background-color: red;
+}
