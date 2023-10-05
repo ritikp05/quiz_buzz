@@ -9,7 +9,7 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions }) => {
     setOptions(questions && reverseOptions([questions[currques]?.correct_answer, ...questions[currques]?.incorrect_answers]))
   }, [questions,currques])
 
-  // console.log(options);
+  // console.log(options)
   function reverseOptions(allOptionsArray) {
     return allOptionsArray.sort(() => Math.random() - 0.5);
   }
