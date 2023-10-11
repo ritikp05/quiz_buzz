@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Question from './Question';
 import CircularProgress from '@mui/material/CircularProgress';
+// import Timer from './Timer';
 const Quiz = ({ name, score, questions, SetScore, SetQuestions }) => {
   const [options, setOptions] = useState();
   const [currques, setCurrques] = useState(0);
   useEffect(() => {
     console.log(questions);
     setOptions(questions && reverseOptions([questions[currques]?.correct_answer, ...questions[currques]?.incorrect_answers]))
-  }, [questions,currques])
+  }, [questions, currques])
+
 
   // console.log(options)
   function reverseOptions(allOptionsArray) {
     return allOptionsArray.sort(() => Math.random() - 0.5);
   }
+
   return (<>
 
     <div className='flex flex-col justify-center items-center '>
@@ -37,15 +40,15 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions }) => {
           SetScore={SetScore}
           SetQuestions={SetQuestions}
           questions={questions}
-
+          set
         /> :
 
-          <CircularProgress size={50} className='mt-24 w-16' />
-      }
+
+          <CircularProgress size={50} className='mt-24 w-16' />}
 
     </div>
   </>
   )
 }
 
-export default Quiz
+export default Quiz;

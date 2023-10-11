@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import Header from './Components/Header';
 import Home from './Components/Home';
 import Quiz from './Components/Quiz';
@@ -18,10 +18,10 @@ const App = () => {
 
   async function fetchData(category = "", difficulty = "") {
 
- const { data } = await axios.get(`https://opentdb.com/api.php?amount=10${category && `&category=${category}`}${difficulty && `&difficulty=${difficulty}`}&type=multiple`); console.log(data);
-SetQuestions(data.results)
-    };
- 
+    const { data } = await axios.get(`https://opentdb.com/api.php?amount=10${category && `&category=${category}`}${difficulty && `&difficulty=${difficulty}`}&type=multiple`); console.log(data);
+    SetQuestions(data.results)
+  };
+
 
   return (
     <>
@@ -32,8 +32,8 @@ SetQuestions(data.results)
           <Routes>
 
             <Route path='/' element={<Home name={name} setName={setName} fetchData={fetchData} />} />
-            <Route path='/quiz' element={<Quiz name={name} questions={questions}  score={score} SetScore={SetScore}/>} />
-            <Route path='/result' element={<Result score={score}/>} />
+            <Route path='/quiz' element={<Quiz name={name} questions={questions} score={score} SetScore={SetScore} />} />
+            <Route path='/result' element={<Result score={score} />} />
 
 
           </Routes>

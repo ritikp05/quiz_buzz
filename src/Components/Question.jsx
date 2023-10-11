@@ -2,10 +2,15 @@ import { Button } from '@mui/material';
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
-// setCurrques ,SetQuestions
+import Timer from './Timer';
+
 const Question = ({ currques, questions, options, score, correct, SetScore, setCurrques }) => {
   const [select, setSelect] = useState();
   const [error, setError] = useState(false);
+
+  const [timer, setTimer] = useState(10);
+
+
   const navigate = useNavigate();
   function handleSelect(optndata) {
     if (select === optndata && select === correct) {
@@ -29,26 +34,34 @@ const Question = ({ currques, questions, options, score, correct, SetScore, setC
   }
 
   function handleNext() {
-    if (currques > 8) {
+    if (currques > 9) {
       navigate("/result");
 
     }
-    else if (select) {
+    // else if (select) {
+    //   setCurrques(currques + 1);
+    //   setSelect();
+    // }
+
+    else {
       setCurrques(currques + 1);
       setSelect();
+
     }
-    else {
-      toast.error("please select an option first")
-    }
+    // else {
+    //   toast.error("please select an option first")
+    // }
   }
   return (
     <>
 
-      <div className='flex flex-col whitespace-normal lg:mt-2 mt-12 h-full pb-4 lg:h-full lg:w-full bg-gray-300 rounded-t-[70px] lg:rounded-[200px]'>
+      <div className='flex flex-col w-screen whitespace-normal lg:mt-2 mt-12 h-full pb-4 lg:h-full lg:w-screen bg-gray-300 '>
+        <Timer currques={currques} setCurrques={setCurrques} setSelect={setSelect} />
+
         <h1 className='text-3xl mt-3 mx-auto font-bold '>Question {currques + 1}</h1>
         {/* single ques */}
         <div className='flex flex-col'>
-          <h2 className='mt-7 lg:mt-5 font-bold text-2xl lg:text-xl lg:mx-auto  whitespace-no ' >{questions[currques].question}</h2>
+          <h2 className='mt-7 lg:mt-5  w-full px-2 font-bold text-2xl lg:text-xl lg:mx-auto  whitespace-no ' >{questions[currques].question}</h2>
 
           {/* option */}
           <div className='flex flex-col gap-3 lg:w-96 w-full mx-auto  mt-7 lg:mt-3'>
