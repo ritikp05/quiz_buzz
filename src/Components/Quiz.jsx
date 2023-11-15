@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Question from './Question';
 import CircularProgress from '@mui/material/CircularProgress';
-// import Timer from './Timer';
 const Quiz = ({ name, score, questions, SetScore, SetQuestions }) => {
   const [options, setOptions] = useState();
   const [currques, setCurrques] = useState(0);
+
   useEffect(() => {
     console.log(questions);
     setOptions(questions && reverseOptions([questions[currques]?.correct_answer, ...questions[currques]?.incorrect_answers]))
   }, [questions, currques])
 
 
-  // console.log(options)
   function reverseOptions(allOptionsArray) {
     return allOptionsArray.sort(() => Math.random() - 0.5);
   }
@@ -21,11 +20,9 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions }) => {
     <div className='flex flex-col justify-center items-center '>
       <span className='mt-6 font-mono  tracking-[2px] shadow-lg shadow-slate-950 text-xl border-2 border-solid border-black px-3 py-2 lg:text-4xl '>Welcome,{name}</span>
 
-      {/* category and score */}
       <div className='flex gap-24 lg:justify-between lg:gap-52 items-center mt-10'>
         <span>{questions[currques]?.category}</span>
         <span>Score:{score}
-          {/* {console.log(questions[currques].category)} */}
         </span>
       </div>
 
@@ -40,8 +37,7 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions }) => {
           SetScore={SetScore}
           SetQuestions={SetQuestions}
           questions={questions}
-          set
-        /> :
+             /> :
 
 
           <CircularProgress size={50} className='mt-24 w-16' />}

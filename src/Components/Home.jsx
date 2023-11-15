@@ -10,6 +10,7 @@ const Home = ({ name, setName, fetchData }) => {
   const [difficulty, setDifficulty] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+
   function handleSubmit() {
 
     if (!category || !difficulty || !name) {
@@ -19,6 +20,7 @@ const Home = ({ name, setName, fetchData }) => {
     }
     else {
       setError(false);
+
       fetchData(category, difficulty);
       navigate('/quiz');
       toast.success("Time to play and learn!")
@@ -28,13 +30,8 @@ const Home = ({ name, setName, fetchData }) => {
   return (
 
     <div className='flex flex-col    w-full mt-6 lg:w-96 border-2 border-gray-300  h-auto lg:h-auto   px-1'>
-      {/* <img 
-      className="bg-black  w-full  lg:w-auto  border-4 lg:border-none lg:shadow-lg rounded-full lg:shadow-blue-600 border-blue-600"
-       src='quizimg2.jpg' alt='ds'  /> */}
       <div className='flex flex-col mt-14 gap-1'>
-
         <h4 className="text-xl lg:text-3xl underline text-gray-500 mx-auto mt-12  lg:mt-5 mb-10  ">Create Your Quiz Profile</h4>
-
         <TextField id="standard-basic" label="Enter Your name" type='text'
           inputProps={{ maxLength: 10 }}
           variant="standard" value={name}
@@ -69,7 +66,7 @@ const Home = ({ name, setName, fetchData }) => {
         <button className='bg-purple-600 hover:bg-purple-800 text-white text-xl py-2 w-72 lg:w-2/3 mt-3 mx-auto lg:mb-4 rounded-2xl ' onClick={handleSubmit}>
           Start Quiz
         </button>
-        
+
       </div>
     </div>
 

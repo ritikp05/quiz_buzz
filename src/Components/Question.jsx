@@ -4,7 +4,8 @@ import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import Timer from './Timer';
 
-const Question = ({ currques, questions, options, score, correct, SetScore, setCurrques }) => {
+const Question = ({ currques, questions, options, score, correct, SetScore, setCurrques }) => 
+{
   const [select, setSelect] = useState();
   const [error, setError] = useState(false);
 
@@ -34,23 +35,15 @@ const Question = ({ currques, questions, options, score, correct, SetScore, setC
   }
 
   function handleNext() {
-    if (currques > 9) {
-      navigate("/result");
-
+    if (currques >= 9) {
+      navigate('/result');
     }
-    // else if (select) {
-    //   setCurrques(currques + 1);
-    //   setSelect();
-    // }
-
     else {
       setCurrques(currques + 1);
       setSelect();
 
     }
-    // else {
-    //   toast.error("please select an option first")
-    // }
+   
   }
   return (
     <>
@@ -74,7 +67,7 @@ const Question = ({ currques, questions, options, score, correct, SetScore, setC
           </div>
         </div>
         <div className='flex mx-auto mt-7 mb-5 gap-8'>
-          <Button variant='contained' color='secondary' onClick={() => navigate("/")}>
+          <Button variant='contained' color='secondary' onClick={() => navigate("/result")}>
             Quit
           </Button>
           <Button variant='contained' color='primary' onClick={handleNext}  >

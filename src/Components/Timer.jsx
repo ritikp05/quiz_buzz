@@ -18,7 +18,7 @@ const navigate=useNavigate();
                 }
             });
 
-        }, 1000);
+        }, 20);
 
         // Clearing the interval when the component unmounts
         return () => clearInterval(interval);
@@ -27,7 +27,7 @@ const navigate=useNavigate();
 
     useEffect(() => {
 
-        setTimer(10);
+        setTimer(1000);
 
 
     }, [currques])
