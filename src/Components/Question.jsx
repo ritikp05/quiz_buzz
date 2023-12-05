@@ -58,7 +58,7 @@ const Question = ({ currques, questions, options, score, correct, SetScore, setC
         <h1 className='sm:text-3xl text-2xl mt-2 mx-auto font-bold  '>Question {currques + 1}</h1>
         {/* single ques */}
         <div className='flex flex-col'>
-          <h2 className='mt-7  lg:mt-5  w-full sm:w-3/4 px-2 font-bold  text-xl  lg:mx-auto  text-center' >{questions[currques].question}</h2>
+          <h2 className='mt-7  lg:mt-5  w-full sm:w-3/4 px-2 font-bold  text-xl  lg:mx-auto text-center' >{questions[currques].question}</h2>
 
           {/* option */}
           <div className='flex flex-col sm:grid sm:grid-flow-row sm:grid-cols-2   sm:gap-3 gap-2 lg:w-8/12 w-4/5 mx-auto  sm:mt-7 mt-4 lg:mt-3'>
@@ -71,10 +71,7 @@ const Question = ({ currques, questions, options, score, correct, SetScore, setC
           </div>
         </div>
         <div className='flex mx-auto sm:mt-7 mt-5 mb-5 gap-8'>
-          <Button variant='contained' color='secondary' onClick={() =>{ play3();
-   setTimeout(()=>{
-    navigate("/result")
-   },1200)}}>
+          <Button variant='contained' color='secondary' onClick={()=> navigate("/result")}>
             Quit
           </Button>
           <Button variant='contained' color='primary' onClick={handleNext}  >

@@ -3,14 +3,13 @@ import TextField from '@mui/material/TextField';
 import { MenuItem } from '@mui/material';
 import categories from '../Data/category';
 import { useNavigate } from "react-router-dom"
-
 import { toast } from 'react-toastify';
-const Home = ({ name, setName, fetchData }) => {
-  const [category, setCat] = useState("");
-  const [difficulty, setDifficulty] = useState("");
+import Popup from './Popup';
+
+
+const Home = ({ name, setName, fetchData,category,Setpopup, popup,setCat,difficulty, setDifficulty }) => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-
   function handleSubmit() {
 
     if (!category || !difficulty || !name) {
@@ -20,7 +19,6 @@ const Home = ({ name, setName, fetchData }) => {
     }
     else {
       setError(false);
-
       fetchData(category, difficulty);
       navigate('/quiz');
        toast.success("")
@@ -28,6 +26,7 @@ const Home = ({ name, setName, fetchData }) => {
   }
 
   return (
+<>
 
     <div className='flex flex-col    w-full mt-6 lg:w-96 border-2 border-gray-300  h-auto lg:h-auto   px-1'>
       <div className='flex flex-col mt-14 gap-1'>
@@ -67,9 +66,15 @@ const Home = ({ name, setName, fetchData }) => {
           Start Quiz
         </button>
 
+
       </div>
     </div>
-
+<section>
+  {
+    popup &&<Popup  Setpopup={Setpopup}/>
+  }
+</section>
+</>
   )
 }
 
