@@ -5,20 +5,14 @@ import { useNavigate } from "react-router-dom";
 import Timer from './Timer';
 import {useSound} from "use-sound"
 import correctSound from '../Sound/correct.mp3'
-// import wrongSound from '../Sound/wrongans.mp3'
-import baigan from '../Sound/aayein.mp3'
-import puneet from '../Sound/puneet.mp3'
-import quit from '../Sound/chalNikal.mp3'
+import wrongSound from '../Sound/wrongans.mp3'
 
 const Question = ({ currques, questions, options, score, correct, SetScore, setCurrques }) => 
 {
   const [select, setSelect] = useState();
   const [error, setError] = useState(false);
-
-  const [timer, setTimer] = useState(10);
-  const [play1] = useSound(puneet);
-  const [play2] = useSound(baigan);
-const[play3]=useSound(quit);
+  const [play1] = useSound(correctSound);
+  const [play2] = useSound(wrongSound);
 
   const navigate = useNavigate();
   function handleSelect(optndata) {
@@ -27,10 +21,8 @@ const[play3]=useSound(quit);
     }
     else if (select === optndata && select !== correct) {
       play2();
-   
       return "wrong";
     }
-
     else if (optndata === correct) {
       return "select";
     }
@@ -60,16 +52,16 @@ const[play3]=useSound(quit);
   }
   return (
     <>
-      <div className='flex flex-col w-screen whitespace-break-spaces lg:mt-2 mt-8 h-auto pb-2 lg:h-auto lg:w-screen bg-gray-300 '>
+      <div className='flex flex-col w-screen whitespace-break-spaces sm:mt-5 mt-8 h-auto pb-2 sm:h-auto  bg-gray-300 '>
         <Timer currques={currques} setCurrques={setCurrques} setSelect={setSelect} />
 
         <h1 className='sm:text-3xl text-2xl mt-2 mx-auto font-bold  '>Question {currques + 1}</h1>
         {/* single ques */}
         <div className='flex flex-col'>
-          <h2 className='mt-7  lg:mt-5  w-full px-2 font-bold sm:text-2xl text-xl lg:text-xl lg:mx-auto  whitespace-no text-center' >{questions[currques].question}</h2>
+          <h2 className='mt-7  lg:mt-5  w-full sm:w-3/4 px-2 font-bold  text-xl  lg:mx-auto  text-center' >{questions[currques].question}</h2>
 
           {/* option */}
-          <div className='flex flex-col sm:grid sm:grid-flow-row sm:grid-cols-2   sm:gap-3 gap-2 lg:w-8/12 w-2/3 mx-auto  sm:mt-7 mt-4 lg:mt-3'>
+          <div className='flex flex-col sm:grid sm:grid-flow-row sm:grid-cols-2   sm:gap-3 gap-2 lg:w-8/12 w-4/5 mx-auto  sm:mt-7 mt-4 lg:mt-3'>
             {error && toast("error")}
             {options && options.map((optndata) => {
               return (

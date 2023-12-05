@@ -16,6 +16,9 @@ const App = () => {
   const [questions, SetQuestions] = useState("");
   const [score, SetScore] = useState(0);
 const[loading,Setloading]=useState(true);
+const [category, setCat] = useState("");
+const [difficulty, setDifficulty] = useState("");
+
   async function fetchData(category = "", difficulty = "") {
     try {
 
@@ -41,9 +44,9 @@ const[loading,Setloading]=useState(true);
 
           <Routes>
 
-            <Route path='/' element={<Home name={name} setName={setName} fetchData={fetchData} />} />
+            <Route path='/' element={<Home name={name} difficulty={difficulty} setDifficulty={setDifficulty} category={category} setCat={setCat} setName={setName} fetchData={fetchData} />} />
             <Route path='/quiz' element={<Quiz name={name} questions={questions} score={score} SetScore={SetScore} loading={loading} Setloading={Setloading}  />} />
-            <Route path='/result' element={<Result score={score} name={name} />} />
+            <Route path='/result' element={<Result score={score} setName={setName} name={name}   setDifficulty={setDifficulty} setCat={setCat}  SetScore={ SetScore}/>} />
             <Route path='*' element={<Errorpage/>} />
          
           </Routes>

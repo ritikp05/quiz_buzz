@@ -15,7 +15,10 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions ,loading}) => {
     return allOptionsArray.sort(() => Math.random() - 0.5);
   }
 
-  return (<>
+  return (<>{  loading ?
+    <Loader name={name} score={score}  />
+    :<div>
+
    <div className='flex flex-col sm:flex-row sm:gap-10 sm:mt-7 mb-2  justify-center items-center '>
       <span className='mt-2 font-mono  tracking-[2px] shadow-md shadow-slate-950 text-xl border-2 border-solid border-black px-3 py-2 lg:text-4xl '>Welcome,{name}</span>
 
@@ -28,9 +31,7 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions ,loading}) => {
 
     </div>
       {
-        loading ?
-           <Loader  />
-           : <Question
+       <Question
           currques={currques}
           setCurrques={setCurrques}
           options={options}
@@ -41,7 +42,8 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions ,loading}) => {
           questions={questions}
              /> 
   }
-  </>
+  </div>
+   } </>
   )
 }
 
