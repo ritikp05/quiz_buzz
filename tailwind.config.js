@@ -10,6 +10,8 @@ export default {
         sans: ['Helvetica', 'Arial', 'sans'],
         serif: ['Georgia', 'serif'],
         mono: ['Menlo', 'monospace'],
+        Pacifico: ['Pacifico', 'cursive','Tourney', 'sans-serif'],
+     
       },
     },
   },

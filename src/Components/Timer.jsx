@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Timer = ({ currques, setCurrques,setSelect }) => {
+const Timer = ({ currques, setCurrques, setSelect }) => {
 
     const [timer, setTimer] = useState(10);
-const navigate=useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -18,44 +17,33 @@ const navigate=useNavigate();
                 }
             });
 
-        }, 20);
+        }, 1000);
 
-        // Clearing the interval when the component unmounts
         return () => clearInterval(interval);
     }, []);
 
 
     useEffect(() => {
-
-        setTimer(1000);
-
-
+        setTimer(10);
     }, [currques])
 
-
-useEffect(()=>{ if (timer === 0) {
-    if (currques < 9) {
-        setCurrques((prev) => prev + 1);
-        setSelect();
-    } else {
-        navigate('/result');
-    }
-}
-
-},[timer])
-
+    useEffect(() => {
+        if (timer === 0) {
+            if (currques < 9) {
+                setCurrques((prev) => prev + 1);
+                setSelect();
+            } else {
+                navigate('/result');
+            }
+        }
+    }, [timer])
 
 
     return (<>
-
-             {/* {timer===0 && setCurrques((prev)=>prev+1)} */}
-        <div className='w-16 h-16 flex relative top-2 left-2 text-white  rounded-full bg-slate-950 '>
-            <span className='m-auto text-2xl'>
+        <div className='sm:w-16 sm:h-16 w-10 h-10 flex relative  sm:top-4 top-2 left-8 text-white  rounded-full bg-slate-950 '>
+            <span className='m-auto sm:text-2xl text-xl'>
                 {timer}
-
             </span>
-
-            {/* {(timer===0 && currques>8) ? navigate("/result"):setCurrques(currques+1)} */}
         </div>
     </>
     )

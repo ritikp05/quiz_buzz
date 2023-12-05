@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import Question from './Question';
-import CircularProgress from '@mui/material/CircularProgress';
-const Quiz = ({ name, score, questions, SetScore, SetQuestions }) => {
+import Loader from './Loader';
+const Quiz = ({ name, score, questions, SetScore, SetQuestions ,loading}) => {
   const [options, setOptions] = useState();
   const [currques, setCurrques] = useState(0);
 
@@ -16,19 +16,21 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions }) => {
   }
 
   return (<>
+   <div className='flex flex-col sm:flex-row sm:gap-10 sm:mt-7 mb-2  justify-center items-center '>
+      <span className='mt-2 font-mono  tracking-[2px] shadow-md shadow-slate-950 text-xl border-2 border-solid border-black px-3 py-2 lg:text-4xl '>Welcome,{name}</span>
 
-    <div className='flex flex-col justify-center items-center '>
-      <span className='mt-6 font-mono  tracking-[2px] shadow-lg shadow-slate-950 text-xl border-2 border-solid border-black px-3 py-2 lg:text-4xl '>Welcome,{name}</span>
-
-      <div className='flex gap-24 lg:justify-between lg:gap-52 items-center mt-10'>
+      <div className='flex gap-24 lg:justify-between lg:gap-28 border-gray-100 items-center mt-4 shadow-lg bg-purple-600 text-white shadow-black py-2 rounded-lg font-mono font-bold text-lg px-2'>
         <span>{questions[currques]?.category}</span>
         <span>Score:{score}
         </span>
       </div>
 
 
+    </div>
       {
-        questions ? <Question
+        loading ?
+           <Loader  />
+           : <Question
           currques={currques}
           setCurrques={setCurrques}
           options={options}
@@ -37,12 +39,8 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions }) => {
           SetScore={SetScore}
           SetQuestions={SetQuestions}
           questions={questions}
-             /> :
-
-
-          <CircularProgress size={50} className='mt-24 w-16' />}
-
-    </div>
+             /> 
+  }
   </>
   )
 }

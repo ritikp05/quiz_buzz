@@ -23,7 +23,7 @@ const Home = ({ name, setName, fetchData }) => {
 
       fetchData(category, difficulty);
       navigate('/quiz');
-      toast.success("Time to play and learn!")
+      toast.success("T!!!")
     }
   }
 
