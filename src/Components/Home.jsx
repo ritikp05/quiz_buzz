@@ -34,6 +34,7 @@ const Home = ({ name, setName, fetchData,category,Setpopup, popup,setCat,difficu
         <TextField id="standard-basic" label="Enter Your name" type='text'
           inputProps={{ maxLength: 10 }}
           variant="standard" value={name}
+          autoComplete='off'
           onChange={(e) => { setName(e.target.value) }} />
         <br />
         <TextField select label="Select Category" variant='standard'
@@ -54,7 +55,8 @@ const Home = ({ name, setName, fetchData,category,Setpopup, popup,setCat,difficu
         <br />
         <TextField select label="Select Difficulty" variant='standard'
           value={difficulty}
-          onChange={(e) => { setDifficulty(e.target.value); }}>
+          onChange={(e) => { setDifficulty(e.target.value); }}
+     >
 
           <MenuItem key="Easy" value="easy">Easy</MenuItem>
           <MenuItem key="Medium" value="medium">Medium</MenuItem>

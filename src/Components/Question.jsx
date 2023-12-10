@@ -13,14 +13,16 @@ const Question = ({ currques, questions, options, score, correct, SetScore, setC
   const [error, setError] = useState(false);
   const [play1] = useSound(correctSound);
   const [play2] = useSound(wrongSound);
+ 
 
   const navigate = useNavigate();
   function handleSelect(optndata) {
     if (select === optndata && select === correct) {
+   
       return "select";
     }
     else if (select === optndata && select !== correct) {
-      play2();
+      play2();         
       return "wrong";
     }
     else if (optndata === correct) {
@@ -36,7 +38,6 @@ const Question = ({ currques, questions, options, score, correct, SetScore, setC
       setError(false);
 
     }
-    
   }
 
   function handleNext() {

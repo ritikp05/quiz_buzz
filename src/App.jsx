@@ -15,10 +15,10 @@ const App = () => {
   const [name, setName] = useState("");
   const [questions, SetQuestions] = useState("");
   const [score, SetScore] = useState(0);
-const[loading,Setloading]=useState(true);
-const [category, setCat] = useState("");
-const [difficulty, setDifficulty] = useState("");
-const [popup,Setpopup]=useState(true);
+  const [loading, Setloading] = useState(true);
+  const [category, setCat] = useState("");
+  const [difficulty, setDifficulty] = useState("");
+  const [popup, Setpopup] = useState(true);
   async function fetchData(category = "", difficulty = "") {
     try {
 
@@ -29,10 +29,9 @@ const [popup,Setpopup]=useState(true);
       console.log(data);
       SetQuestions(data.results)
       Setloading(false);
-    }catch (error) {
-     Seterror(true);
+    } catch (error) {
+      Seterror(true);
       console.log(error);
-      
     }
   }
 
@@ -41,14 +40,11 @@ const [popup,Setpopup]=useState(true);
       <BrowserRouter>
         <div className='flex flex-col justify-start items-center w-full  h-screen '>
           <Header />
-
           <Routes>
-
             <Route path='/' element={<Home name={name} popup={popup} Setpopup={Setpopup} difficulty={difficulty} setDifficulty={setDifficulty} category={category} setCat={setCat} setName={setName} fetchData={fetchData} />} />
-            <Route path='/quiz' element={<Quiz name={name} questions={questions}  score={score} SetScore={SetScore} loading={loading} setDifficulty={setDifficulty} setName={setName} Setloading={Setloading}  />} />
-            <Route path='/result' element={<Result score={score} setName={setName} name={name}   setDifficulty={setDifficulty} setCat={setCat}  SetScore={ SetScore}/>} />
-            <Route path='*' element={<Errorpage/>} />
-         
+            <Route path='/quiz' element={<Quiz name={name} questions={questions} score={score} SetScore={SetScore} loading={loading} setDifficulty={setDifficulty} setName={setName} Setloading={Setloading} />} />
+            <Route path='/result' element={<Result score={score} setName={setName} name={name} setDifficulty={setDifficulty} setCat={setCat} SetScore={SetScore} />} />
+            <Route path='*' element={<Errorpage />} />
           </Routes>
         </div>
         {/* <Footer/> */}

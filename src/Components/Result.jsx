@@ -1,15 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { HiOutlineTrophy } from "react-icons/hi2";
+// import LinearProgress from '@mui/material/LinearProgress';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import CircularProgress from '@mui/joy/CircularProgress';
+import 'react-circular-progressbar/dist/styles.css';
 
-const Result = ({ score, name, setName, setCat, setDifficulty, SetScore }) => {
+
+
+const Result = ({ score,incorrect, name, setName, setCat, setDifficulty, SetScore }) => {
   const percentage = (score / 10) * 100;
   let message;
   if (percentage >= 70) {
-    message = `Congratulations, ${name}! You did great!`;
+    message = `Congratulations, ${name}! You did great! ${<HiOutlineTrophy />}`;
   } else if (percentage >= 50) {
-    message = `Well done, ${name}! Keep it up!`;
+    message = `Well done, ${name}! Keep it up! ${<HiOutlineTrophy />}`;
   } else {
-    message = `You can do better, ${name}. Keep practicing!`;
+    message = `You can do better, ${name}. Keep practicing! `;
   }
 
   const navigate = useNavigate();
@@ -28,7 +35,21 @@ const Result = ({ score, name, setName, setCat, setDifficulty, SetScore }) => {
       score>=0 && name ?
 
         <div className='flex flex-col'>
+        {/* <LinearProgress variant="buffer" value={percentage} valueBuffer={buffer}></LinearProgress> */}
+       
           <section className='flex flex-col sm:mt-20 items-center justify-center mt-10 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white p-10 rounded-lg'>
+           <CircularProgressbar className='w-24' value={percentage} text={`${percentage}%`}/>
+           <CircularProgress size="lg" determinate value={incorrect}  sx={{ '--CircularProgress-size': '70px' }}>{incorrect}</CircularProgress>
+           
+         <CircularProgress  determinate value={score}
+           sx={{ '--CircularProgress-size': '70px' }}>
+         score { score}
+</CircularProgress>
+    <CircularProgress  determinate value={100}
+            sx={{ '--CircularProgress-size': '70px' }}>
+           Total-10
+</CircularProgress>
+        
             <h1 className='text-4xl font-extrabold mb-4'>{message}</h1>
             <div className='bg-white text-blue-500 p-8 rounded-lg shadow-md text-center'>
               <h2 className='text-2xl font-semibold mb-4'>Quiz Result</h2>

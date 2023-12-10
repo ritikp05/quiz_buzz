@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Timer = ({ currques, setCurrques, setSelect }) => {
 
-    const [timer, setTimer] = useState(10);
+    const [timer, setTimer] = useState(15);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Timer = ({ currques, setCurrques, setSelect }) => {
 
 
     useEffect(() => {
-        setTimer(10);
+        setTimer(15);
     }, [currques])
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import Question from './Question';
 import Loader from './Loader';
-const Quiz = ({ name, score, questions, SetScore, SetQuestions ,loading}) => {
+const Quiz = ({ name, score, questions, SetScore, SetQuestions ,loading ,setName,setDifficulty}) => {
   const [options, setOptions] = useState();
   const [currques, setCurrques] = useState(0);
 
@@ -16,7 +16,8 @@ const Quiz = ({ name, score, questions, SetScore, SetQuestions ,loading}) => {
   }
 
   return (<>{  loading ?
-    <Loader name={name} score={score}  />
+    <Loader name={name} score={score} SetScore={SetScore} 
+    setName={setName} setDifficulty={setDifficulty} />
     :<div>
 
    <div className='flex flex-col sm:flex-row sm:gap-10 sm:mt-7 mb-2  justify-center items-center '>
