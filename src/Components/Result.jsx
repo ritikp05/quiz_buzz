@@ -9,11 +9,9 @@ const Result = ({ score, name, setName, setCat, setDifficulty, SetScore }) => {
   const percentage = (score / 10) * 100;
   let message;
   if (percentage >= 70) {
-    message = `Congratulations, ${name}! You did great! ${(
-      <HiOutlineTrophy />
-    )}`;
+    message = `Congratulations, ${name}! You did great!`;
   } else if (percentage >= 50) {
-    message = `Well done, ${name}! Keep it up! ${(<HiOutlineTrophy />)}`;
+    message = `Well done, ${name}! Keep it up!`;
   } else {
     message = `You can do better, ${name}. Keep practicing! `;
   }

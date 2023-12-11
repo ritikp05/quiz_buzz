@@ -4,7 +4,7 @@ const Popup = ({Setpopup}) => {
   return (
    <>
 
-    <div className="fixed sm:top-24 top-0   w-full left-0 z-50 flex items-center justify-center">
+    <div className="fixed sm:top-24 top-14  w-full left-0 z-50 flex items-center justify-center">
       <div className="bg-white sm:px-8 sm:py-20 border-black border-2 p-8 mx-4 md:mx-auto max-w-md rounded-lg shadow-md">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-gray-800">Welcome to the Quiz!</h2>
