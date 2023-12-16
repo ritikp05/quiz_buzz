@@ -53,7 +53,7 @@ const App = () => {
                   setCat={setCat}
                   setName={setName}
                   fetchData={fetchData}
-                />
+                 />
               }
             />
             <Route
@@ -89,7 +89,6 @@ const App = () => {
             <Route path="*" element={<Errorpage />} />
           </Routes>
         </div>
-        {/* <Footer/> */}
         <ToastContainer />
       </BrowserRouter>
     </>
