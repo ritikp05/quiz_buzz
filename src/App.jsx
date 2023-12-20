@@ -84,12 +84,12 @@ const App = () => {
                 />
               }
             />
-            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/feedback" element={<Feedback/>} />
 
-            <Route path="*" element={<Errorpage />} />
+            <Route path="*" element={<Errorpage/>} />
           </Routes>
         </div>
-        <ToastContainer />
+        <ToastContainer/>
       </BrowserRouter>
     </>
   );
